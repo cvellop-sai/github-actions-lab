@@ -8,13 +8,8 @@ on:
     branches: [ main ]
 
 jobs:
-  buildAndTest:
-    
-    strategy:
-      matrix:
-        node-version: [16, 17, 18]
-        os: [ubuntu-latest, ubuntu-slim]
-    runs-on: ${{ matrix.os }}
+  build:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -27,4 +22,24 @@ jobs:
         run: |
           npm ci
           npm run build
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 18
+      - name: Unit tests
+        working-directory: ./hangman-api
+        run: |
+          npm ci
           npm run test
+  bye:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: bye
+        run: echo "bye!"
