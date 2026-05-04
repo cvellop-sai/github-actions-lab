@@ -10,9 +10,11 @@ jobs:
   audit:
     runs-on: ubuntu-latest
     steps:
-      - name: Inspect machine
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Build
+        working-directory: ./hangman-api
         run: |
-          ls -al
-          whoami
-          pwd
-          node -v
+          npm ci
+          npm run build
+          npm run test
