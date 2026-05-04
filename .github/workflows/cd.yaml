@@ -1,0 +1,16 @@
+name: Continous delivery
+
+on:
+  workflow_dispatch:
+
+jobs:
+  delivery:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Get Docker version
+        run: docker --version
+      - name: Build
+        working-directory: ./hangman-api
+        run: docker build -t cvellop071/hangman-api:latest .
