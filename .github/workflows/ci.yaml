@@ -10,10 +10,17 @@ on:
 jobs:
   buildAndTest:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16, 17, 18]
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
-      - name: Build
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Build and test
         working-directory: ./hangman-api
         run: |
           npm ci
