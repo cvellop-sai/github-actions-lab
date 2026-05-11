@@ -1,4 +1,4 @@
-name: Integración continua
+name: Integración continua (api)
 
 on:
   push:
