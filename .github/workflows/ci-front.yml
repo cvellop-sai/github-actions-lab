@@ -36,10 +36,3 @@ jobs:
         run: |
           npm ci
           npm run test
-  bye:
-    runs-on: ubuntu-latest
-    #if: always() # para que se ejecute aunque falle el job de test
-    needs: test
-    steps:
-      - name: bye
-        run: echo "bye!"
