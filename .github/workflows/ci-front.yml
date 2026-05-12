@@ -1,0 +1,45 @@
+name: CI Front
+
+on:
+  pull_request: #Al hacer pull request
+    branches: [ main ]
+    paths: #Solamente en la carpeta hangman-front
+      - 'hangman-front/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 18
+      - name: Build and test
+        working-directory: ./hangman-front
+        run: |
+          npm ci
+          npm run build
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 18
+      - name: Unit tests
+        working-directory: ./hangman-front
+        run: |
+          npm ci
+          npm run test
+  bye:
+    runs-on: ubuntu-latest
+    #if: always() # para que se ejecute aunque falle el job de test
+    needs: test
+    steps:
+      - name: bye
+        run: echo "bye!"
