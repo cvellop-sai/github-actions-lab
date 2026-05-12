@@ -25,3 +25,44 @@ Al hacer push del archivo index.html y ejecutar el pull request, el build finali
 ![Ejecución de PR](capturas/ci-05.png)
 
 Habría que modificar el código para que pase los tests, o eliminar los tests que fallan.
+
+## 2. Workflow CD para el proyecto de frontend
+### Archivo de workflow
+
+1. Evento disparador del workflow: manual (workflow_dispatch).
+
+![CD disparador](capturas/cd-01.png)
+
+2. Tareas para el envío: checkout del proyecto, docker login y build and push.
+
+![CD jobs](capturas/cd-02.png)
+
+### Configuración de DOCKER_USER y DOCKER_SECRET
+
+1. Variable DOCKER_USER
+
+![Variable DOCKER_USER](capturas/cd-03.png)
+
+2. Secret DOCKER_SECRET
+
+![Secret DOCKER_SECRET](capturas/cd-04.png)
+
+
+### Ejecución
+
+1. Workflow
+
+![workflow](capturas/cd-05.png)
+
+![workflow detalle](capturas/cd-06.png)
+
+2. Publicación den DockerHub
+
+![imagen en DockerHub](capturas/cd-07.png)
+
+
+
+
+
+
+   
