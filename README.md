@@ -56,7 +56,7 @@ Habría que modificar el código para que pase los tests, o eliminar los tests q
 
 ![workflow detalle](capturas/cd-06.png)
 
-2. Publicación den DockerHub
+2. Publicación en DockerHub
 
 ![imagen en DockerHub](capturas/cd-07.png)
 
