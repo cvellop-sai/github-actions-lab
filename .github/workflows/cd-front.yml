@@ -25,5 +25,5 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: cvellop-sai/hangman-front:latest
+          tags: cvellop071/hangman-front:latest
           context: ./hangman-front
