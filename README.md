@@ -24,7 +24,14 @@ Al hacer push del archivo index.html y ejecutar el pull request, el build finali
 
 ![Ejecución de PR](capturas/ci-05.png)
 
-Habría que modificar el código para que pase los tests, o eliminar los tests que fallan.
+Habría que modificar el código para que pase los tests, en este caso modificando el 1 por 2 en el argumento de .toHaveLength.
+
+Una vez modificado ya pasa los tests.
+
+![Ejecución de PR resuelto](capturas/ci-06.png)
+
+![Ejecución de PR detalle](capturas/ci-07.png)
+
 
 ## 2. Workflow CD para el proyecto de frontend
 ### Archivo de workflow
